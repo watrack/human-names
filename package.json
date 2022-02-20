@@ -1,9 +1,9 @@
 {
-  "name": "human-names",
-  "version": "1.0.11",
+  "name": "@watrack/human-names",
+  "version": "2.0.0",
   "description": "Get popular human names",
   "license": "MIT",
-  "repository": "AlessandroMinoccheri/human-names",
+  "repository": "watrack/human-names",
   "bin": {
     "human-names": "cli.js"
   },
@@ -46,5 +46,6 @@
   },
   "devDependencies": {
     "ava": "0.0.4"
-  }
+  },
+  "private": false
 }
