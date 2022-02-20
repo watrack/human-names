@@ -1,6 +1,6 @@
 {
   "name": "@watrack/human-names",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Get popular human names",
   "license": "MIT",
   "repository": "watrack/human-names",
@@ -40,6 +40,7 @@
     "female",
     "male"
   ],
+  "types": "./index.d.ts",
   "dependencies": {
     "meow": "^3.0.0",
     "unique-random-array": "^1.0.0"
