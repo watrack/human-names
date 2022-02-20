@@ -31,19 +31,23 @@ const maleNames = new Map([
   ["tr",  require('./data/male-human-names-tr.json')],
 ])
 
-export const getRandom = (locale, gender) => {
+const getRandom = (locale, gender) => {
   if (gender =='male' && !maleNames.has(locale) || 
       gender == 'female' && !femaleNames.has(locale) ||
       (!maleNames.has(locale) && !femaleNames.has(locale))) {
     return undefined
   }
   
+  let names = femaleNames.get(locale);
   if (gender == 'male') {
-    return uniqueRandomArray(maleNames[locale])
+    names = maleNames.get(locale)
   } else if (gender == 'female') {
-    return uniqueRandomArray(femaleNames[locale])
+    names = femaleNames.get(locale)
   } else if (Math.random() >= 0.5) {
-    return uniqueRandomArray(maleNames[locale])
+    names = maleNames.get(locale)
   } 
-  return uniqueRandomArray(femaleNames[locale])
+
+  return uniqueRandomArray(names)()
 }
+
+module.exports = {getRandom}

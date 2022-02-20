@@ -1,12 +1,10 @@
 #!/usr/bin/env node
 'use strict';
 
-String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-}
+
+const {getRandom} = require('./index')
 
 var meow = require('meow');
-var humanNames = require('./');
 
 var cli = meow({
     help: [
@@ -14,7 +12,7 @@ var cli = meow({
         '  $ human-names',
         '  John',
         '',
-        '  $ human-names --all --type male',
+        '  $ human-names --type male',
         '  John',
         '  Bart',
         '  ...',
@@ -22,12 +20,11 @@ var cli = meow({
         '  John',
         '',
         'Options',
-        '  --all   Get all names instead of a random name',
-        '  --type  Type of name: female|male|all  Default: all',
+        '  --type  Type of name: female|male|both  Default: both',
         '  --lang  lang of name: en|it|fr|de|es|nl  Default: en'
     ].join('\n')
 });
 
-var type = cli.flags.type || 'all';
-var lang = cli.flags.lang || 'En';
-console.log(cli.flags.all ? humanNames[type + lang.capitalize()].join('\n') : humanNames[type + 'Random' + lang.capitalize()]());
+var type = cli.flags.type || 'both';
+var lang = cli.flags.lang || 'en';
+console.log(getRandom(lang, type));
